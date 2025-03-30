@@ -1,0 +1,91 @@
+#include<stdio.h>
+int main() {
+	float onRedHouse=0;//on 1
+	float fstRoad=0.5;//on 2
+	float blocked=-1;//on -1
+	float normalHouse=1;// on 0
+	float left=0,right=0;
+	int checkingleftmostelement;
+	int checkingrightmostelement;
+	// making loop
+	int size;
+	scanf("%d",&size);
+	int  a[size];
+	for(int i=0; i<=size-1; ++i) {
+		scanf("%d",&a[i]);
+	}
+
+	float copy[size];
+	for(int i=0; i<=size-1; ++i) {
+		copy[i]=0;
+	}
+	for(int i=0; i<=size-1; ++i) {
+		checkingrightmostelement=0;
+		checkingleftmostelement=0;
+		if(a[i]==1) {
+			copy[i]=onRedHouse;
+			continue;
+		}
+		else if(a[i]==-1) {
+			copy[i]=blocked;
+			continue;
+		}
+		// one loop to chexk on right hand side
+		left =0;
+		right=0;
+
+		for(int j=i; j<=size-1; ++j) {
+			if(a[j]==0) {
+				left+=normalHouse;
+			}
+			else if(a[j]==2) {
+				left+=fstRoad;
+			}
+			else if(a[j]==-1) {
+				left=-1;
+				break;
+			}
+			else {
+				checkingleftmostelement=a[j];
+				break;
+			}
+		}
+		//one side to chexk on left hand side
+		for(int j=i; j>=0; --j) {
+			if(a[j]==0) {
+				right+=normalHouse;
+			}
+			else if(a[j]==2) {
+				right+=fstRoad;
+			}
+			else if(a[j]==-1) {
+				right=-1;
+				break;
+			}
+			else {
+				checkingrightmostelement=a[j];
+				break;
+			}
+		}
+		if(checkingleftmostelement==0 && checkingrightmostelement==0)
+			copy[i]=blocked;
+		else if(checkingleftmostelement==1 && checkingrightmostelement==1) {
+			if(right>left) {
+				copy[i]=left;
+			}
+			else {
+				copy[i]=right;
+			}
+		}
+		else if(checkingleftmostelement==0 && checkingrightmostelement==1) {
+			copy[i]=right;
+		}
+		else {
+			copy[i]=left;
+		}
+	}
+	for(int i=0; i<=size-1; ++i) {
+		printf("%.1f ",copy[i]);
+	}
+
+}
