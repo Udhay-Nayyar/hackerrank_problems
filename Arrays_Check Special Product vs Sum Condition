@@ -1,0 +1,61 @@
+#include <stdio.h>
+#include <limits.h>
+
+int main() {
+    int arr_count;
+    scanf("%d",&arr_count);
+    int i=0;
+    int arr[arr_count];
+    while(i<arr_count){
+        scanf("%d",&arr[i]);
+        i++;
+    }
+    i = 0;
+    int min = INT_MAX;
+    int max = INT_MIN;
+    int minv, maxv;
+
+    while (i < arr_count) {
+        if (arr[i] > max) {
+            max = arr[i];
+            maxv = arr[i];
+        }
+        if (arr[i] < min) {
+            min = arr[i];
+            minv = arr[i];
+        }
+        i++;
+    }
+    
+    i = 0;
+    min = INT_MAX;
+    max = INT_MIN;
+    int smaxv,sminv;
+    while (i < arr_count) {
+        if(arr[i]!=maxv && arr[i]!=minv){
+            
+        if (arr[i] > max) {
+            max = arr[i];
+            smaxv = arr[i];
+        }
+        if (arr[i] < min) {
+            min = arr[i];
+            sminv = arr[i];
+        }
+        }
+        i++;
+    }
+
+    // printf("Maximum value: %d\n", maxv);
+    // printf("Minimum value: %d\n", minv);
+    //  printf("Second Maximum value: %d\n", smaxv);
+    // printf("Second value: %d\n", sminv);
+    if((smaxv*minv)>(sminv+maxv)){
+        printf("True");
+        
+    }
+    else{
+        printf("False");
+    }
+    return 0;
+}
