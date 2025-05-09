@@ -1,0 +1,133 @@
+#include <stdio.h>
+void printUnion(int n1,int n2,int arr1[],int arr2[]) {
+    int i=0;
+    int j=0;
+    while(i<n1 && j<n2) {
+        if(arr1[i]<arr2[j]) {
+            if(i==0){
+                printf("%d ",arr1[i]);   
+            }
+            else{
+                if(arr1[i]==arr1[i-1])
+                {
+                    
+                }
+                else{
+                   printf("%d ",arr1[i]);  
+                }
+            }
+           
+            i++;
+        }
+        else if(arr1[i]>arr2[j]) {
+            if(j==0){
+               printf("%d ",arr2[j]); 
+            }
+            else{
+                if(arr2[j]==arr2[j-1])
+                {
+                    
+                }
+                else{
+                  printf("%d ",arr2[j]); 
+                }
+            }
+            j++;
+        }
+        else {
+            if(i==0 && j==0)
+            {
+            printf("%d ",arr1[i]);
+            }
+            else{
+                if(arr1[i-1]!=arr1[i] && arr2[j-1]!=arr2[j]){
+                     printf("%d ",arr1[i]);
+                }
+                else{
+                    
+                }
+            }
+            
+            i++;
+            j++;
+        }
+        
+    }
+    
+        while(i<n1){
+            if(i==0){
+                printf("%d ",arr1[i]);
+            }
+            else{
+                
+            if(arr1[i-1]!=arr1[i]){
+                printf("%d ",arr1[i]);
+            }
+                else{
+                
+                }
+            }
+            
+            i++;
+        }
+        while(j<n2){
+            if(j==0){
+                printf("%d ",arr2[j]);
+            }
+            else{
+                
+            if(arr2[j-1]!=arr2[j]){
+                printf("%d ",arr2[j]);
+            }
+                else{
+                
+                }
+            }
+            j++;
+        }
+}
+void printIntersection(int n1,int n2,int arr1[],int arr2[]){
+    int i=0,j=0;
+    int count=0;
+    while(i<n1 && j<n2) {
+        if(arr1[i]<arr2[j]) {
+            i++;
+        }
+        else if(arr1[i]>arr2[j]) {
+            j++;
+        }
+        else {
+            if(arr1[i-1]!=arr1[i]){
+            printf("%d ",arr1[i]);
+            count++;
+            }
+            
+            i++;
+            j++;
+        }
+        
+    }
+    if(count==0){
+        printf("Intersection Not Possible");
+    }
+}
+int main()
+{
+    int n1;
+    scanf("%d",&n1);
+    int arr1[n1];
+    for(int i=0; i<=n1-1; ++i) {
+        scanf("%d",&arr1[i]);
+    }
+    int n2;
+    scanf("%d",&n2);
+    int arr2[n2];
+    for(int i=0; i<=n2-1; ++i) {
+        scanf("%d",&arr2[i]);
+    }
+    printUnion(n1,n2,arr1,arr2);
+    printf("\n");
+    printIntersection(n1,n2,arr1,arr2);
+
+    return 0;
+}
