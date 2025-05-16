@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int main() {
+
+    /* Enter your code here. Read input from STDIN. Print output to STDOUT */ 
+    int n;
+    scanf("%d",&n);
+    int sum=0,sum1=0;
+    int i=1;
+    while(i<=n){
+        sum+=i;
+        i++;
+    }
+    int a[n-1];
+    for(int i=0;i<=n-2;++i){
+        scanf("%d",&a[i]);
+        sum1+=a[i];
+    }
+    printf("%d",sum-sum1);
+    return 0;
+}
