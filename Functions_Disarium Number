@@ -1,0 +1,85 @@
+#include <stdio.h>
+
+int is_disarium_number(int n) {
+    int sum=0;
+    int pro=1;
+    int count=0;
+    int initial_no=n;
+    int new=n;
+    while(n!=0){
+        count++;
+        n=n/10;
+    }
+    int loop=count;
+        int last=n;
+
+    for(int i=1;i<=loop;i++)
+    {
+        int last=new%10;
+        for(int j=1;j<=count;++j)
+        {
+            pro*=last;
+        }
+        sum+=pro;
+        
+        new=new/10;
+        count--;
+        pro=1;
+        
+    }
+    if(initial_no==sum){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    printf("%d\n", is_disarium_number(n));
+    return 0;
+}#include <stdio.h>
+
+int is_disarium_number(int n) {
+    int sum=0;
+    int pro=1;
+    int count=0;
+    int initial_no=n;
+    int new=n;
+    while(n!=0){
+        count++;
+        n=n/10;
+    }
+    int loop=count;
+        int last=n;
+
+    for(int i=1;i<=loop;i++)
+    {
+        int last=new%10;
+        for(int j=1;j<=count;++j)
+        {
+            pro*=last;
+        }
+        sum+=pro;
+        
+        new=new/10;
+        count--;
+        pro=1;
+        
+    }
+    if(initial_no==sum){
+        return 1;
+    }
+    else{
+        return 0;
+    }
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    printf("%d\n", is_disarium_number(n));
+    return 0;
+}
