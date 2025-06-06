@@ -1,0 +1,62 @@
+#include <stdio.h>
+
+int is_smith_number(int n) {
+    int initial=n;
+    int add=0;
+    while(n!=0) {
+        int last=n%10;
+        add=add+last;
+        n=n/10;
+    }
+
+    int sum=0;
+    int i=2;
+    while(initial>1) {
+        int new=i;
+        if(initial%i==0) {
+            if(i<=10) {
+                sum+=i;
+            }
+            else {
+                while(i!=0)
+                {
+                    int c=i%10;
+                    sum+=c;
+                    i=i/10;
+                }
+                i=new;
+            }
+            initial=initial/i;
+        }
+        else {
+            i++;
+        }
+    }
+
+    if(sum==add) {
+        return 1;
+    }
+    else {
+        return 0;
+
+    }
+}
+
+int main() {
+    int n;
+    scanf("%d", &n);
+    int flag=1;
+    for(int i=2;i*i<=n;++i)
+    {
+        if(n%i==0){
+            flag=0;
+            break;
+        }
+    }
+    if(flag==1){
+        printf("0");
+        return 0;
+    }
+    printf("%d\n", is_smith_number(n));
+    return 0;
+}
